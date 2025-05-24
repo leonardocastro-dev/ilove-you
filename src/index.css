@@ -5,10 +5,9 @@
 
 .swiper {
   overflow: visible;
-  border-radius: 1rem;
 }
 
-.swiper-slide-shadow-coverflow {
+.swiper-slide-shadow {
   border-radius: 1rem;
 }
 

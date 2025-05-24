@@ -78,8 +78,7 @@ const PhotoGallery = () => {
   } : {
     effect: "cards",
     grabCursor: true,
-    modules: [EffectCards],
-    className: "mySwiper"
+    modules: [EffectCards]
   };
 
   return (
