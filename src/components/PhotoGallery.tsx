@@ -24,6 +24,36 @@ const PhotoGallery = () => {
       id: 3,
       src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
       alt: "Nossa foto 3"
+    },
+    {
+      id: 4,
+      src: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop",
+      alt: "Nossa foto 1"
+    },
+    {
+      id: 5,
+      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=400&fit=crop",
+      alt: "Nossa foto 2"
+    },
+    {
+      id: 6,
+      src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
+      alt: "Nossa foto 3"
+    },
+    {
+      id: 7,
+      src: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop",
+      alt: "Nossa foto 1"
+    },
+    {
+      id: 8,
+      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=400&fit=crop",
+      alt: "Nossa foto 2"
+    },
+    {
+      id: 9,
+      src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
+      alt: "Nossa foto 3"
     }
   ];
 
