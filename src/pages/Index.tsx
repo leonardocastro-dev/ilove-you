@@ -31,7 +31,7 @@ const Index = () => {
       <div className="container mx-auto relative z-10">
         {!showLove ? (
           // Initial State
-          <div className="flex flex-col items-center justify-center text-center space-y-8">
+          <div className="overflow-hidden flex flex-col items-center justify-center text-center space-y-8">
             <div className="animate-fade-in">
               <h1 className="text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent mb-4">
                 Para Você ♡
