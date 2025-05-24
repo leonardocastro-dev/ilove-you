@@ -1,14 +1,17 @@
 import { Camera } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, A11y, EffectCoverflow } from 'swiper/modules';
+import { EffectCoverflow, EffectCards, Pagination } from 'swiper/modules';
+import { useMediaQuery } from 'usehooks-ts';
 
 // Importar estilos do Swiper
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-cards';
 
 const PhotoGallery = () => {
-  // Placeholder photos - you can replace these with your actual photos
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+
   const photos = [
     {
       id: 1,
@@ -57,6 +60,28 @@ const PhotoGallery = () => {
     }
   ];
 
+  const swiperConfig = isDesktop ? {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 3,
+    loop: true,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: true,
+    modules: [EffectCoverflow, Pagination],
+  } : {
+    effect: "cards",
+    grabCursor: true,
+    modules: [EffectCards],
+    className: "mySwiper"
+  };
+
   return (
     <div className="space-y-8">
       <div className="text-center">
@@ -71,21 +96,8 @@ const PhotoGallery = () => {
 
       <div className="mx-auto px-4">
         <Swiper
-          effect="coverflow"
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={3}
-          loop={true}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={true}
-          modules={[EffectCoverflow, Pagination]}
-          className="w-full"
+          {...swiperConfig}
+          className={`w-full ${!isDesktop ? 'max-w-sm mx-auto' : ''}`}
         >
           {photos.map((photo) => (
             <SwiperSlide key={photo.id}>
