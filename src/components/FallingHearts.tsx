@@ -16,12 +16,12 @@ const FallingHearts = () => {
     
     const generateHearts = () => {
       const newHearts: Heart[] = [];
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 20; i++) {
         newHearts.push({
           id: i,
           x: Math.random() * 100,
           delay: Math.random() * 5,
-          size: Math.random() * 20 + 15,
+          size: Math.random() * 10 + 15,
           color: heartColors[Math.floor(Math.random() * heartColors.length)]
         });
       }
@@ -50,19 +50,6 @@ const FallingHearts = () => {
           {heart.color}
         </div>
       ))}
-      
-      <style>{`
-        @keyframes fall {
-          0% {
-            transform: translateY(-50px) rotate(0deg);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(100vh) rotate(360deg);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 };

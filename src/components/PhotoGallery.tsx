@@ -82,7 +82,7 @@ const PhotoGallery = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <>
       <div className="text-center">
         <h2 className="text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent mb-4">
           <Camera className="inline-block mr-2 h-8 w-8 text-pink-500" />
@@ -122,11 +122,7 @@ const PhotoGallery = () => {
           ))}
         </Swiper>
       </div>
-
-      <div className="text-center text-gray-500 italic">
-        <p>✨ Substitua essas imagens pelas suas fotos especiais ✨</p>
-      </div>
-    </div>
+    </>
   );
 };
 

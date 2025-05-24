@@ -76,15 +76,15 @@ const Index = () => {
             {/* Photo Gallery */}
             <PhotoGallery />
 
-            {/* Reset Button */}
-            <div className="text-center pt-8">
+            {/* Back Button */}
+            <div className="text-center">
               <Button
                 onClick={() => setShowLove(false)}
                 variant="outline"
-                className="border-pink-300 text-pink-600 hover:bg-pink-50"
+                className="border-pink-300 mb-10 text-pink-600 hover:bg-pink-50"
               >
                 <Heart className="mr-2 h-4 w-4" />
-                Ver Novamente
+                Voltar
               </Button>
             </div>
           </div>
