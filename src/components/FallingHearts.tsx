@@ -52,7 +52,7 @@ const FallingHearts = () => {
         </div>
       ))}
       
-      <style jsx>{`
+      <style>{`
         @keyframes fall {
           0% {
             transform: translateY(-50px) rotate(0deg);

@@ -1,6 +1,13 @@
 
 import React from 'react';
 import { Camera } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const PhotoGallery = () => {
   // Placeholder photos - you can replace these with your actual photos
@@ -34,31 +41,35 @@ const PhotoGallery = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {photos.map((photo, index) => (
-          <div
-            key={photo.id}
-            className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            style={{ animationDelay: `${index * 0.2}s` }}
-          >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute bottom-4 left-4 text-white">
-                <p className="font-semibold">{photo.alt}</p>
-                <p className="text-sm">💕 Com muito amor</p>
-              </div>
-            </div>
-            
-            {/* Heart overlay */}
-            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="text-red-500 text-2xl animate-pulse">♡</div>
-            </div>
-          </div>
-        ))}
+      <div className="max-w-2xl mx-auto px-4">
+        <Carousel className="w-full">
+          <CarouselContent>
+            {photos.map((photo) => (
+              <CarouselItem key={photo.id}>
+                <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-96 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <p className="font-semibold">{photo.alt}</p>
+                      <p className="text-sm">💕 Com muito amor</p>
+                    </div>
+                  </div>
+                  
+                  {/* Heart overlay */}
+                  <div className="absolute top-4 right-4">
+                    <div className="text-red-500 text-2xl animate-pulse">♡</div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
 
       <div className="text-center text-gray-500 italic">
