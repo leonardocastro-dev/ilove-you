@@ -69,14 +69,6 @@ const PhotoGallery = () => {
     handleStart(e.clientX);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    handleMove(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    handleEnd();
-  };
-
   // Touch events
   const handleTouchStart = (e: React.TouchEvent) => {
     handleStart(e.touches[0].clientX);
@@ -112,35 +104,39 @@ const PhotoGallery = () => {
 
   const getImageStyle = (index: number) => {
     const position = index - currentIndex;
-    const offset = dragDistance * 0.002; // Reduce the drag effect
+    const dragOffset = dragDistance * 0.5;
     
     if (position === 0) {
-      // Center image
+      // Center image - full size and opacity
       return {
-        transform: `translateX(${offset * 100}px) scale(1)`,
+        transform: `translateX(calc(-50% + ${dragOffset}px)) scale(1)`,
         opacity: 1,
         zIndex: 10,
+        left: '50%',
       };
     } else if (position === -1) {
-      // Left image
+      // Left image - smaller and less opaque
       return {
-        transform: `translateX(${-30 + offset * 100}px) scale(0.8)`,
+        transform: `translateX(calc(-50% + ${dragOffset}px)) scale(0.8)`,
         opacity: 0.6,
         zIndex: 5,
+        left: '20%',
       };
     } else if (position === 1) {
-      // Right image
+      // Right image - smaller and less opaque
       return {
-        transform: `translateX(${30 + offset * 100}px) scale(0.8)`,
+        transform: `translateX(calc(-50% + ${dragOffset}px)) scale(0.8)`,
         opacity: 0.6,
         zIndex: 5,
+        left: '80%',
       };
     } else {
       // Hidden images
       return {
-        transform: `translateX(${position > 0 ? 100 : -100}px) scale(0.8)`,
+        transform: `translateX(calc(-50% + ${dragOffset}px)) scale(0.6)`,
         opacity: 0,
         zIndex: 1,
+        left: position > 0 ? '100%' : '0%',
       };
     }
   };
@@ -157,7 +153,7 @@ const PhotoGallery = () => {
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div 
           ref={containerRef}
           className="relative h-96 overflow-hidden cursor-grab active:cursor-grabbing select-none"
@@ -167,16 +163,16 @@ const PhotoGallery = () => {
           onTouchEnd={handleTouchEnd}
         >
           {photos.map((photo, index) => {
-            const isVisible = Math.abs(index - currentIndex) <= 1;
-            if (!isVisible) return null;
+            const position = Math.abs(index - currentIndex);
+            // Show center image and the ones immediately to the left and right
+            if (position > 1) return null;
 
             return (
               <div
                 key={photo.id}
-                className="absolute top-1/2 left-1/2 w-80 h-80 transition-all duration-300 ease-out"
+                className="absolute top-1/2 w-80 h-80 transition-all duration-300 ease-out"
                 style={{
                   ...getImageStyle(index),
-                  marginLeft: '-160px',
                   marginTop: '-160px',
                 }}
               >
@@ -222,7 +218,7 @@ const PhotoGallery = () => {
 
       <div className="text-center text-gray-500 italic">
         <p>✨ Substitua essas imagens pelas suas fotos especiais ✨</p>
-        <p className="text-sm mt-2">🖱️ Arraste a imagem do meio para navegar</p>
+        <p className="text-sm mt-2">👆 Arraste a imagem do meio para navegar</p>
       </div>
     </div>
   );
