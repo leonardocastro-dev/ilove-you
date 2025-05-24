@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
 import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import FallingHearts from '@/components/FallingHearts';
 import PhotoGallery from '@/components/PhotoGallery';
-import MusicPlayer from '@/components/MusicPlayer';
+import RelationshipTimer from '../components/RelationshipTimer';
+import LoveReasons from '../components/LoveReasons';
 
 const Index = () => {
   const [showLove, setShowLove] = useState(false);
@@ -28,9 +28,6 @@ const Index = () => {
       {/* Falling Hearts Animation */}
       {showLove && <FallingHearts />}
 
-      {/* Music Player */}
-      <MusicPlayer isPlaying={musicStarted} />
-
       <div className="container mx-auto relative z-10">
         {!showLove ? (
           // Initial State
@@ -40,7 +37,7 @@ const Index = () => {
                 Para Você ♡
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-md">
-                Tenho algo especial para te contar...
+                Feito pra voce sempre lembrar como eu te amo...
               </p>
               
               <Button
@@ -55,8 +52,23 @@ const Index = () => {
         ) : (
           // Love Declaration State
           <div className="space-y-12 animate-fade-in">
+            {/* Music Player */}
+            <div className='flex justify-center'>
+              <iframe 
+                style={{borderRadius: "12px"}} 
+                src="https://open.spotify.com/embed/playlist/0YLYOSDYstfQ8xyRYtucUS?utm_source=generator&autoplay=1"
+                width="100%" 
+                height="152" 
+                className='max-w-xl !mt-12'
+                frameBorder="0"
+                allowFullScreen={true} 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+              </iframe>
+            </div>
+            
             {/* Love Message */}
-            <div className="text-center py-12">
+            <div className="text-center">
               <h1 className="text-7xl font-bold bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 bg-clip-text text-transparent mb-6 animate-pulse">
                 EU TE AMO! ♡
               </h1>
@@ -68,13 +80,22 @@ const Index = () => {
                   Cada momento ao seu lado é um presente
                 </p>
                 <p className="animate-fade-in" style={{ animationDelay: '1.5s' }}>
-                  Te amo hoje, amanhã e para sempre ♡
+                  Eu so tenho que te agradecer por tudo que você é e faz por mim.
+                </p>
+                <p className="animate-fade-in" style={{ animationDelay: '2s' }}>
+                  Te amo hoje, amanhã e para sempre meu amor ♡
                 </p>
               </div>
             </div>
 
             {/* Photo Gallery */}
             <PhotoGallery />
+            
+            {/* Relationship Timer */}
+            <RelationshipTimer />
+
+            {/* Love Reasons */}
+            <LoveReasons />
 
             {/* Back Button */}
             <div className="text-center">

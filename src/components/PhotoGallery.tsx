@@ -89,7 +89,7 @@ const PhotoGallery = () => {
           Nossas Memórias ♡
         </h2>
         <p className="text-gray-600">
-          Cada foto guarda um momento especial nosso
+          Onde você lembra de quando nos conhecemos, e até onde chegamos.
         </p>
       </div>
 
