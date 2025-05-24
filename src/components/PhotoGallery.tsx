@@ -1,13 +1,11 @@
-
-import React from 'react';
 import { Camera } from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y, EffectCoverflow } from 'swiper/modules';
+
+// Importar estilos do Swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const PhotoGallery = () => {
   // Placeholder photos - you can replace these with your actual photos
@@ -41,35 +39,47 @@ const PhotoGallery = () => {
         </p>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4">
-        <Carousel className="w-full">
-          <CarouselContent>
-            {photos.map((photo) => (
-              <CarouselItem key={photo.id}>
-                <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-96 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <p className="font-semibold">{photo.alt}</p>
-                      <p className="text-sm">💕 Com muito amor</p>
-                    </div>
-                  </div>
-                  
-                  {/* Heart overlay */}
-                  <div className="absolute top-4 right-4">
-                    <div className="text-red-500 text-2xl animate-pulse">♡</div>
+      <div className="mx-auto px-4">
+        <Swiper
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={3}
+          loop={true}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          className="w-full"
+        >
+          {photos.map((photo) => (
+            <SwiperSlide key={photo.id}>
+              <div className="relative overflow-hidden rounded-2xl shadow-lg">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-96 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="font-semibold">{photo.alt}</p>
+                    <p className="text-sm">💕 Com muito amor</p>
                   </div>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+                
+                {/* Heart overlay */}
+                <div className="absolute top-4 right-4">
+                  <div className="text-red-500 text-2xl animate-pulse">♡</div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       <div className="text-center text-gray-500 italic">

@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { Heart, Music, Camera } from 'lucide-react';
+import { useState } from 'react';
+import { Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import FallingHearts from '@/components/FallingHearts';
 import PhotoGallery from '@/components/PhotoGallery';
@@ -16,7 +16,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 relative">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 text-pink-300 text-6xl">💕</div>
@@ -31,10 +31,10 @@ const Index = () => {
       {/* Music Player */}
       <MusicPlayer isPlaying={musicStarted} />
 
-      <div className="container mx-auto px-4 py-8 relative z-10">
+      <div className="container mx-auto relative z-10">
         {!showLove ? (
           // Initial State
-          <div className="min-h-screen flex flex-col items-center justify-center text-center space-y-8">
+          <div className="flex flex-col items-center justify-center text-center space-y-8">
             <div className="animate-fade-in">
               <h1 className="text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent mb-4">
                 Para Você ♡

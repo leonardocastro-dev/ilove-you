@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper {
+  overflow: visible;
+  border-radius: 1rem;
+}
+
+.swiper-slide-shadow-coverflow {
+  border-radius: 1rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
