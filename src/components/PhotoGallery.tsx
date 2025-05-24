@@ -2,8 +2,6 @@ import { Camera } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, EffectCards, Pagination } from 'swiper/modules';
 import { useMediaQuery } from 'usehooks-ts';
-
-// Importar estilos do Swiper
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
@@ -13,51 +11,17 @@ const PhotoGallery = () => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   const photos = [
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop",
-      alt: "Nossa foto 1"
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=400&fit=crop",
-      alt: "Nossa foto 2"
-    },
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
-      alt: "Nossa foto 3"
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop",
-      alt: "Nossa foto 1"
-    },
-    {
-      id: 5,
-      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=400&fit=crop",
-      alt: "Nossa foto 2"
-    },
-    {
-      id: 6,
-      src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
-      alt: "Nossa foto 3"
-    },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=400&fit=crop",
-      alt: "Nossa foto 1"
-    },
-    {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=400&fit=crop",
-      alt: "Nossa foto 2"
-    },
-    {
-      id: 9,
-      src: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=400&fit=crop",
-      alt: "Nossa foto 3"
-    }
+    '/carrousel/1.jpg',
+    '/carrousel/2.jpg',
+    '/carrousel/3.jpg',
+    '/carrousel/4.jpg',
+    '/carrousel/5.jpg',
+    '/carrousel/6.jpg',
+    '/carrousel/7.jpg',
+    '/carrousel/8.jpg',
+    '/carrousel/9.jpg',
+    '/carrousel/10.jpg'
+    
   ];
 
   const swiperConfig = isDesktop ? {
@@ -99,24 +63,12 @@ const PhotoGallery = () => {
           className={`w-full ${!isDesktop ? 'max-w-sm mx-auto' : ''}`}
         >
           {photos.map((photo) => (
-            <SwiperSlide key={photo.id}>
-              <div className="relative overflow-hidden rounded-2xl shadow-lg">
+            <SwiperSlide key={photo}>
+              <div className="relative overflow-hidden rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
                 <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-96 object-cover"
+                  src={photo}
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-semibold">{photo.alt}</p>
-                    <p className="text-sm">💕 Com muito amor</p>
-                  </div>
-                </div>
-                
-                {/* Heart overlay */}
-                <div className="absolute top-4 right-4">
-                  <div className="text-red-500 text-2xl animate-pulse">♡</div>
-                </div>
               </div>
             </SwiperSlide>
           ))}
